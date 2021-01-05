@@ -22,6 +22,7 @@
   }catch(Exceptions $e){
     die("Error: Not able to execute $sql. " .$e->getMessage());
   }*/
+  /*
   try{
     $sql = "CREATE TABLE persons(
       id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -32,6 +33,15 @@
     $conn->exec($sql);
     echo "Table created successfully!!";
   }catch(Exceptions $e){
+    die ("Error: Could execute .$sql ".$e->getMessage());
+  }*/
+  try {
+    $sql = "INSERT INTO persons 
+    (first_name, last_name, email)
+    VALUES ('Peter', 'Parker', 'peterparker@mail.com')";
+    $conn->exec($sql);
+    echo " Records added successfully";
+  } catch (Exceptions $e) {
     die ("Error: Could execute .$sql ".$e->getMessage());
   }
   //closing connection
