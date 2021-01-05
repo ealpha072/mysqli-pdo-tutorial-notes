@@ -35,6 +35,8 @@
   }catch(Exceptions $e){
     die ("Error: Could execute .$sql ".$e->getMessage());
   }*/
+  //single entry
+  /*
   try {
     $sql = "INSERT INTO persons 
     (first_name, last_name, email)
@@ -43,7 +45,23 @@
     echo " Records added successfully";
   } catch (Exceptions $e) {
     die ("Error: Could execute .$sql ".$e->getMessage());
-  }
+  }*/
+  //multiple entries
+  /*
+  try {
+    $sql = "INSERT INTO persons 
+    (first_name, last_name, email)
+    VALUES ('John', 'Rambo', 'johnrambo@mail.com'),
+          ('Clark', 'Kent', 'clarkkent@mail.com'),
+          ('John', 'Carter', 'johncarter@mail.com'),
+          ('Harry', 'Potter', 'harrypotter@mail.com')";  
+    $conn->exec($sql);
+    echo " Records inserted successfully";
+  } catch (Exceptions $e) {
+    die ("Error: Could execute .$sql ".$e->getMessage());
+  }*/
+  //working with form data
+  
   //closing connection
   $conn = null; //or unset($conn)
 ?>
