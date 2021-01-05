@@ -149,6 +149,7 @@
   } catch (Exceptions $e) {
     die("Error: Could not execute .$sql ".$e->getMessage());
   }
+
   //close stmt
   unset($stmt);
   //closing connection
