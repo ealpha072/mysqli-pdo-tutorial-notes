@@ -80,6 +80,7 @@
   } catch (Exceptions $e) {  
     die ("Error: Could not execute .$sql ".$e->getMessage());
   }*/
+  /*
   try {
     $sql = "INSERT INTO persons (first_name, last_name, email)
     VALUES (:first_name,:last_name,:email)";
@@ -103,6 +104,16 @@
 
   } catch (Exceptions $e) {
     die ("Error: Could not execute .$sql ".$e->getMessage());
+  }*/
+  try {
+    $sql = "INSERT INTO persons (first_name, last_name, email)
+    VALUES ('Ron', 'Weasley', 'ronweasley@mail.com')";
+    $conn->exec($sql);
+    $last_id = $conn->lastInsertId();
+
+    echo "Record inserted successfully. Last ID entered was ". $last_id;
+  } catch (Exceptions $er) {
+    die("Error: Could not execute .$sql ".$e->getMessage());
   }
   //close stmt
   unset($stmt);
