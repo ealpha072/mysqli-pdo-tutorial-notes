@@ -5,7 +5,7 @@
 <title>Add Record Form</title>
 </head>
 <body>
-<form action="insert.php" method="post">
+<form action="config.php" method="post">
     <p>
         <label for="firstName">First Name:</label>
         <input type="text" name="first_name" id="firstName">
