@@ -105,6 +105,7 @@
   } catch (Exceptions $e) {
     die ("Error: Could not execute .$sql ".$e->getMessage());
   }*/
+  /*
   try {
     $sql = "INSERT INTO persons (first_name, last_name, email)
     VALUES ('Ron', 'Weasley', 'ronweasley@mail.com')";
@@ -113,6 +114,36 @@
 
     echo "Record inserted successfully. Last ID entered was ". $last_id;
   } catch (Exceptions $er) {
+    die("Error: Could not execute .$sql ".$e->getMessage());
+  }*/
+  try {
+    //code...
+    $sql = "SELECT * FROM persons";
+    $results = $conn->query($sql);
+    if($results->rowCount()>0){
+      echo "<table>";
+        echo "<tr>";
+          echo "<th>id</th>";
+          echo "<th>first_name</th>";
+          echo "<th>last_name</th>";
+          echo "<th>email</th>";
+        echo "</tr>";
+        while($row= $results->fetch()){
+          echo "<tr>";
+              echo "<td>" . $row['id'] . "</td>";
+              echo "<td>" . $row['first_name'] . "</td>";
+              echo "<td>" . $row['last_name'] . "</td>";
+              echo "<td>" . $row['email'] . "</td>";
+          echo "</tr>";
+        }
+      echo "<table>";
+      //unset results
+      unset($results);
+    }else{
+      echo "No results found for your query";
+    }
+
+  } catch (Exceptions $e) {
     die("Error: Could not execute .$sql ".$e->getMessage());
   }
   //close stmt
