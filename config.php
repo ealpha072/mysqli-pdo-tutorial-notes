@@ -4,6 +4,7 @@
   $dsn = "mysql:host=localhost;dbname=demo;charset=utf8mb4";
   $username = "root";
   $password = "";
+
   try{
     $conn = new PDO($dsn,$username,$password);
     //set PDO error mode to exception
@@ -33,7 +34,7 @@
     $conn->exec($sql);
     echo "Table created successfully!!";
   }catch(Exceptions $e){
-    die ("Error: Could execute .$sql ".$e->getMessage());
+    die ("Error: Could not execute .$sql ".$e->getMessage());
   }*/
   //single entry
   /*
@@ -44,7 +45,7 @@
     $conn->exec($sql);
     echo " Records added successfully";
   } catch (Exceptions $e) {
-    die ("Error: Could execute .$sql ".$e->getMessage());
+    die ("Error: Could not execute .$sql ".$e->getMessage());
   }*/
   //multiple entries
   /*
@@ -58,10 +59,27 @@
     $conn->exec($sql);
     echo " Records inserted successfully";
   } catch (Exceptions $e) {
-    die ("Error: Could execute .$sql ".$e->getMessage());
+    die ("Error: Could not execute .$sql ".$e->getMessage());
   }*/
   //working with form data
-  
+  try {
+    //CREATE PREPAIRED STMTS
+    $sql = "INSERT INTO persons (first_name, last_name, email)
+    VALUES (:first_name, :last_name, :email)";
+    $stmt = $conn->prepare($sql);
+
+    //bind parameters to statement
+    $stmt->bindParam(':first_name', $_REQUEST['first_name']);
+    $stmt->bindParam(':last_name', $_REQUEST['last_name']);
+    $stmt->bindParam(':email', $_REQUEST['email']);
+
+    //execute the prepired stmt
+    $stmt->execute();
+    echo "Records added successfully";
+  } catch (Exceptions $e) {  
+    die ("Error: Could not execute .$sql ".$e->getMessage());
+  }
+
   //closing connection
   $conn = null; //or unset($conn)
 ?>
