@@ -62,6 +62,7 @@
     die ("Error: Could not execute .$sql ".$e->getMessage());
   }*/
   //working with form data
+  /*
   try {
     //CREATE PREPAIRED STMTS
     $sql = "INSERT INTO persons (first_name, last_name, email)
@@ -78,8 +79,32 @@
     echo "Records added successfully";
   } catch (Exceptions $e) {  
     die ("Error: Could not execute .$sql ".$e->getMessage());
-  }
+  }*/
+  try {
+    $sql = "INSERT INTO persons (first_name, last_name, email)
+    VALUES (:first_name,:last_name,:email)";
 
+    $stmt =$conn->prepare($sql);
+
+    //binding
+    $stmt->bindParam(':first_name',$first_name,PDO::PARAM_STR);
+    $stmt->bindParam(':last_name',$last_name,PDO::PARAM_STR);
+    $stmt->bindParam(':email',$email,PDO::PARAM_STR);
+
+    //set the parameters and execute
+    $first_name  ="Hermonie";
+    $last_name = "Owen";
+    $email = "hermonie@gmail.com";
+    
+    $stmt->execute();
+
+    echo "Record inserted successfully";
+
+  } catch (Exceptions $e) {
+    die ("Error: Could not execute .$sql ".$e->getMessage());
+  }
+  //close stmt
+  unset($stmt);
   //closing connection
   $conn = null; //or unset($conn)
 ?>
