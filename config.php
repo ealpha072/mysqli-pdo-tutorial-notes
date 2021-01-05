@@ -120,28 +120,31 @@
     //code...
     $sql = "SELECT * FROM persons";
     $results = $conn->query($sql);
-    if($results->rowCount()>0){
-      echo "<table>";
-        echo "<tr>";
-          echo "<th>id</th>";
-          echo "<th>first_name</th>";
-          echo "<th>last_name</th>";
-          echo "<th>email</th>";
-        echo "</tr>";
-        while($row= $results->fetch()){
-          echo "<tr>";
-              echo "<td>" . $row['id'] . "</td>";
-              echo "<td>" . $row['first_name'] . "</td>";
-              echo "<td>" . $row['last_name'] . "</td>";
-              echo "<td>" . $row['email'] . "</td>";
-          echo "</tr>";
-        }
-      echo "<table>";
+    if($results->rowCount()>0){?>
+
+      <table class="table table-striped table-dark">
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">E-mail</th>
+          </tr>
+        </thead>
+        <?php while($row= $results->fetch()){?>
+          <tr>
+            <td><?php echo $row['id'];?></td>
+            <td><?php echo $row['first_name'];?></td>
+            <td><?php echo $row['last_name'];?></td>
+            <td><?php echo $row['email'];?></td>
+          </tr>
+        <?php }?>  
+      <table>
+    <?php } else { echo "No results found for your query";}?>
+
+<?php 
       //unset results
       unset($results);
-    }else{
-      echo "No results found for your query";
-    }
 
   } catch (Exceptions $e) {
     die("Error: Could not execute .$sql ".$e->getMessage());
