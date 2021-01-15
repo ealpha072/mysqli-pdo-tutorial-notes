@@ -16,14 +16,14 @@
   }
 
   //creating a database
-  /*try{
+  try{
     $sql ="CREATE DATABASE demo";
     $conn->exec($sql);
     echo "Database created successfully";
   }catch(Exceptions $e){
     die("Error: Not able to execute $sql. " .$e->getMessage());
-  }*/
-  /*
+  }
+  
   try{
     $sql = "CREATE TABLE persons(
       id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -35,9 +35,9 @@
     echo "Table created successfully!!";
   }catch(Exceptions $e){
     die ("Error: Could not execute .$sql ".$e->getMessage());
-  }*/
+  }
   //single entry
-  /*
+  
   try {
     $sql = "INSERT INTO persons 
     (first_name, last_name, email)
@@ -46,9 +46,9 @@
     echo " Records added successfully";
   } catch (Exceptions $e) {
     die ("Error: Could not execute .$sql ".$e->getMessage());
-  }*/
+  }
   //multiple entries
-  /*
+  
   try {
     $sql = "INSERT INTO persons 
     (first_name, last_name, email)
@@ -60,9 +60,9 @@
     echo " Records inserted successfully";
   } catch (Exceptions $e) {
     die ("Error: Could not execute .$sql ".$e->getMessage());
-  }*/
+  }
   //working with form data
-  /*
+  
   try {
     //CREATE PREPAIRED STMTS
     $sql = "INSERT INTO persons (first_name, last_name, email)
@@ -79,8 +79,8 @@
     echo "Records added successfully";
   } catch (Exceptions $e) {  
     die ("Error: Could not execute .$sql ".$e->getMessage());
-  }*/
-  /*
+  }
+  
   try {
     $sql = "INSERT INTO persons (first_name, last_name, email)
     VALUES (:first_name,:last_name,:email)";
@@ -104,8 +104,8 @@
 
   } catch (Exceptions $e) {
     die ("Error: Could not execute .$sql ".$e->getMessage());
-  }*/
-  /*
+  }
+ 
   try {
     $sql = "INSERT INTO persons (first_name, last_name, email)
     VALUES ('Ron', 'Weasley', 'ronweasley@mail.com')";
@@ -115,7 +115,7 @@
     echo "Record inserted successfully. Last ID entered was ". $last_id;
   } catch (Exceptions $er) {
     die("Error: Could not execute .$sql ".$e->getMessage());
-  }*/
+  }
   try {
     //code...
     $sql = "SELECT * FROM persons";
